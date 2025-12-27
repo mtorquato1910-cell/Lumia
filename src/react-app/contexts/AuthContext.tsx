@@ -163,8 +163,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * Redireciona para a página de login do Google
    */
   const signInWithGoogle = useCallback(async () => {
+    console.log('Tentando logar...'); // DEBUG
+    
+    // Verificar se Supabase está configurado
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseKey) {
+      const errorMsg = 'Erro: Chaves do Supabase não configuradas. Verifique o arquivo .env com VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY';
+      console.error(errorMsg);
+      alert(errorMsg);
+      return;
+    }
+    
     try {
       setIsLoading(true);
+      console.log('Iniciando OAuth com Google...');
       
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',

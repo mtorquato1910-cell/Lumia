@@ -19,10 +19,12 @@ export default function Header() {
   }, []);
 
   const handleLogin = async () => {
+    console.log('Botão Login/Criar Conta clicado!'); // DEBUG
     try {
       await signInWithGoogle();
     } catch (error) {
       console.error('Login failed:', error);
+      alert('Erro ao fazer login. Verifique o console para mais detalhes.');
     }
   };
 

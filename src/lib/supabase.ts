@@ -23,10 +23,12 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Validação das variáveis de ambiente
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn(
-    '⚠️ Supabase credentials not found. Please create a .env file with:\n' +
-    'VITE_SUPABASE_URL=https://your-project.supabase.co\n' +
-    'VITE_SUPABASE_ANON_KEY=your-anon-key'
+  console.error(
+    '🚨 ERRO CRÍTICO: Chaves do Supabase não encontradas!\n\n' +
+    'Para configurar, crie um arquivo .env na raiz do projeto com:\n' +
+    'VITE_SUPABASE_URL=https://seu-projeto.supabase.co\n' +
+    'VITE_SUPABASE_ANON_KEY=sua-anon-key\n\n' +
+    'Obtenha essas chaves em: https://supabase.com/dashboard/project/_/settings/api'
   );
 }
 

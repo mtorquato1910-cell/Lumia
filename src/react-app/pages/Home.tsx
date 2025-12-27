@@ -71,10 +71,12 @@ export default function HomePage() {
    * Chama a função signInWithGoogle do contexto de autenticação
    */
   const handleGoogleLogin = async () => {
+    console.log('Botão Google clicado!'); // DEBUG
     try {
       await signInWithGoogle();
     } catch (error) {
       console.error('Failed to sign in:', error);
+      alert('Erro ao fazer login. Verifique o console para mais detalhes.');
     }
   };
 
